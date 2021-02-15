@@ -26,6 +26,6 @@ public abstract class Item {
         return calories;
     }
 
-    protected abstract String getDescription();
+    public abstract String getDescription();
 
 }

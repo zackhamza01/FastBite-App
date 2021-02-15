@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Order {
@@ -31,5 +32,10 @@ public class Order {
             price += item.getPrice();
         }
         return price;
+    }
+
+    public String getTotalAmountString() {
+        DecimalFormat f = new DecimalFormat("##.00");
+        return "Total: $" + f.format(getTotalAmount());
     }
 }

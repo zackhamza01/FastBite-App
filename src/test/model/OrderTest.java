@@ -55,11 +55,15 @@ public class OrderTest {
     public void testTotalAmount() {
         order.addItemToOrder(f1);
         assertEquals(7.5, order.getTotalAmount());
+        assertEquals("Total: $7.50", order.getTotalAmountString());
         order.addItemToOrder(f2);
         assertEquals(10.8, order.getTotalAmount());
+        assertEquals("Total: $10.80", order.getTotalAmountString());
         order.addItemToOrder(d1);
         assertEquals(13.3, order.getTotalAmount());
+        assertEquals("Total: $13.30", order.getTotalAmountString());
         order.addItemToOrder(d2);
         assertEquals(16.3, order.getTotalAmount());
+        assertEquals("Total: $16.30", order.getTotalAmountString());
     }
 }
