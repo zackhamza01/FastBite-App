@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//This is the Test for the Drink class in the model package
 public class DrinkTest {
     Drink d;
 
