@@ -84,7 +84,7 @@ public class FastBiteApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: Initalizes Order, the 3 top FastFood restaurants, and input to a Scanner object.
+    // EFFECTS: Initializes Order, the 3 top FastFood restaurants, and input to a Scanner object.
     // Then calls addItemsToRestaurantInit method
     private void init() {
         order = new Order();
