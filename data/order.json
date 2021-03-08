@@ -1,0 +1,18 @@
+{"orderlist": [
+    {
+        "price": 4.59,
+        "name": "Egg McMuffin",
+        "calories": 290
+    },
+    {
+        "volume": 250,
+        "price": 3.7,
+        "name": "Chocolate Milk",
+        "calories": 3.7
+    },
+    {
+        "price": 7.6,
+        "name": "Poutine",
+        "calories": 1170
+    }
+]}

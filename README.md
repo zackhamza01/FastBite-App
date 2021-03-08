@@ -21,5 +21,5 @@
 - As a user, I want to be able to be able to remove items from my order
 - As a user, I want to be able to see the number of calories in each item
 - As a user, I want to be able to finalize the order and ship that order to my address
-- As a user, I want to be able to save my order to file
-- As a user, I want to be able to load my order from file
+- As a user, I want to be able to save my order to JSON file when I am quitting
+- As a user, I want to be able to load my order of another session from JSON file

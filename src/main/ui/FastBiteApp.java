@@ -1,9 +1,12 @@
 package ui;
 
 import model.*;
+import persistence.*;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 //This is the UI for the FastBite App. Users are given an Order form and a list of FastFoods to pick from.
 //The user can also view their order form and choose if they want to remove anything from the list
@@ -11,11 +14,14 @@ import java.util.Scanner;
 //their address for the items to be shipped at.
 public class FastBiteApp {
     //fields
+    private static final String JSON_STORE = "./data/order.json";
     private Order order;
     private FastFood f1;
     private FastFood f2;
     private FastFood f3;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //Constructor
     // EFFECTS: Calls the runFastBite method (creates the while loop)
@@ -27,6 +33,7 @@ public class FastBiteApp {
     // EFFECTS: Welcomes the user, then establishes the loop to enter the main menu after every interaction
     //Also, this method modifies the input field as it re-initializes it to a new Scanner (to clear previous inputs)
     //After the while loop is terminated, it says goodbye to the user
+    // If the user decides to quit, the program asks the user if they want to save before they quit
     private void runFastBite() {
         System.out.println("Welcome to the FastBite App! Hope you enjoy!");
         boolean keepGoing = true;
@@ -41,6 +48,7 @@ public class FastBiteApp {
             command = command.toLowerCase();
 
             if (command.equals("quit")) {
+                askToSave();
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -52,12 +60,13 @@ public class FastBiteApp {
 
     // EFFECTS: The main menu; which gives the user the option to either add food to their order
     // by picking from a number of popular fast food restaurants, view the order form, finalize and checkout
-    // the order, or quit
+    // the order, load their order from a previous session (saved in JSON file), or quit
     private void displayMenu() {
         System.out.println("\nSelect from the following:");
         System.out.println("\tfood -> Get food from a list of fast food restaurants");
         System.out.println("\tview -> View your current order");
         System.out.println("\tcheckout -> Finalize your order and checkout");
+        System.out.println("\tload -> Load order from previous session");
         System.out.println("\tquit -> quit the application");
     }
 
@@ -78,6 +87,8 @@ public class FastBiteApp {
             } else {
                 System.out.println("Going back to main menu.");
             }
+        } else if (command.equals("load")) {
+            loadOrder();
         } else {
             System.out.println("Selection not valid. Try again.");
         }
@@ -92,6 +103,8 @@ public class FastBiteApp {
         f2 = new FastFood("Freshslice Pizza");
         f3 = new FastFood("Dairy Queen");
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         addItemsToRestaurantInit();
     }
 
@@ -229,6 +242,42 @@ public class FastBiteApp {
         System.out.println("Your order will be shipped to " + address + " shortly!");
         System.out.println("Thank for using the FastBite App! Goodbye!");
         System.exit(0);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Saves order to JSON file
+    private void saveOrder() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(order);
+            System.out.println("Saved order to " + JSON_STORE);
+            jsonWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write file");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Loads order from JSON file
+    private void loadOrder() {
+        try {
+            order = jsonReader.readOrder();
+            System.out.println("Loaded order from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read file");
+        }
+    }
+
+    // EFFECTS: When the user selects to quit, this method asks the user
+    // if they want to save before they quit. If they do, it saves the order
+    private void askToSave() {
+        System.out.println("Do you want to save your order before quitting? (yes/no)");
+        String response = input.nextLine();
+        if (response.equals("yes")) {
+            saveOrder();
+        } else {
+            System.out.println("Order was not saved.");
+        }
     }
 
 }
