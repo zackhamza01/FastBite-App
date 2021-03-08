@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 //Abstract class used to create the Food and Drink classes. The instantiated methods
 //are the getter methods for its fields. The one abstract method Item has is getDescription
 //which makes Food and Drink instantiate their own instantiations for the method.
-public abstract class Item {
+public abstract class Item implements Writable {
     //Fields
     private String name;
     private double price;

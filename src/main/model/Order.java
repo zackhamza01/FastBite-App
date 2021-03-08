@@ -2,10 +2,13 @@ package model;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import persistence.Writable;
 
 //This class makes the user an Order form to keep track of the items that the user adds
 //and wants to check out. It can add and remove items, along with give the total price of the items
-public class Order {
+public class Order implements Writable {
     //fields
     private ArrayList<Item> orderlist;
 
@@ -50,5 +53,24 @@ public class Order {
     public String getTotalAmountString() {
         DecimalFormat f = new DecimalFormat("##.00");
         return "Total: $" + f.format(getTotalAmount());
+    }
+
+    // EFFECTS: Returns Order as JSONObject
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("orderlist", itemToOrderJson());
+        return json;
+    }
+
+    // EFFECTS: Returns items in Order as a JSONArray
+    private JSONArray itemToOrderJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item item: orderlist) {
+            jsonArray.put(item.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
 import java.text.DecimalFormat;
+import org.json.JSONObject;
+import persistence.Writable;
 
 //Subclass of the abstract class Item. Used for solid foods (ex: apple or hamburger)
 //Instantiates the abstract method getDescription for solid foods
@@ -22,4 +24,13 @@ public class Food extends Item {
         return getName() + "\t(" + getCalories() + " Cals)\t" + "$" + f.format(getPrice());
     }
 
+    // EFFECTS: Returns Food as a JSONObject
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", super.getName());
+        json.put("price", super.getPrice());
+        json.put("calories", super.getCalories());
+        return json;
+    }
 }

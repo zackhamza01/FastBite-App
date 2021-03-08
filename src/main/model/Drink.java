@@ -1,6 +1,8 @@
 package model;
 
 import java.text.DecimalFormat;
+import org.json.JSONObject;
+import persistence.Writable;
 
 //Another subclass of the abstract class Item. Used for drinks (liquids like water, coca cola, etc.)
 //Instantiaes the abstract method getDescription for drinks
@@ -27,5 +29,16 @@ public class Drink extends Item {
     public String getDescription() {
         DecimalFormat f = new DecimalFormat("##.00");
         return getName() + "\t(" + getCalories() + " Cals, " + getVolume() + " mL)\t" + "$" + f.format(getPrice());
+    }
+
+    // EFFECTS: Returns Drink as a JSONObject
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", super.getName());
+        json.put("price", super.getPrice());
+        json.put("calories", super.getPrice());
+        json.put("volume", volume);
+        return json;
     }
 }
