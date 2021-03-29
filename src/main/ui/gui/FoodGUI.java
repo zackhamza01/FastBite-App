@@ -138,7 +138,8 @@ public class FoodGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: ActionListener for each item. If it is pressed, then it adds the item to the order and lets the user know
+    // EFFECTS: ActionListener for each item. If it is pressed, then it
+    // adds the item to the order and lets the user know
     private void foodButtonListener(JButton button, Item item) {
         button.addActionListener(new ActionListener() {
             @Override

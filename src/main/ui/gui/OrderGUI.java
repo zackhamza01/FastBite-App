@@ -24,7 +24,8 @@ public class OrderGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: Initializes almost all the remaining fields (creates the splitPane, two JPanels, and displays this JFrame)
+    // EFFECTS: Initializes almost all the remaining fields
+    // (creates the splitPane, two JPanels, and displays this JFrame)
     private void initialize() {
         setTitle("FastBite Order Form");
         splitPane = new JSplitPane();
@@ -98,7 +99,8 @@ public class OrderGUI extends JFrame {
         orderInfoPanel.add(checkoutButton);
     }
 
-    // EFFECTS: ActionListener for the checkoutButton, if checkout is pressed, then it asks user if they want to confirm,
+    // EFFECTS: ActionListener for the checkoutButton, if checkout is pressed,
+    // then it asks user if they want to confirm,
     // then asks the user for their address, and finally terminates the program
     private void checkoutButtonListener(JButton button) {
         button.addActionListener(new ActionListener() {
