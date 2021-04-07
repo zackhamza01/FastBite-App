@@ -28,4 +28,16 @@
 - A type hierarchy is implemented in this project that involves the Item, Food, and Drink classes
 - In this hierarchy, the Item class is the abstract class that has an abstract getDescription() method
 - The Food and Drink classes extend Item and override the getDescription() method with their respective override implementations
+## Phase 4: Task 3
+- Based on the UML Diagram, I would refactor the FastBiteApp to split it up into different components (classes).
+- That is because the FastBiteApp has too many responsibilities in one single class, and its cohesion can be increased
+by adding classes to take some of the many responsibilities 
+- An example could be splitting the UI up into an OrderUI and FastFoodGUI to take care of those classes
+- Another class that is needed for the UI is possibly an Address class, as the UI prompts the user to put their
+- address after checking out
+-This can be improved by including an Address class that would take care of this functionality
+- In the GUI classes, there are also a lot of methods that are almost the same, which increases the coupling of this project
+- This is bad as changing one of the implementations of these identical methods means the other methods also need to be changed
+- A solution to this is implementing a design pattern to decrease the coupling in the GUI classes
+
 
