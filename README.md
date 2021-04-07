@@ -23,3 +23,9 @@
 - As a user, I want to be able to finalize the order and ship that order to my address
 - As a user, I want to be able to save my order to JSON file when I am quitting
 - As a user, I want to be able to load my order of another session from JSON file
+
+## Phase 4: Task 2
+- A type hierarchy is implemented in this project that involves the Item, Food, and Drink classes
+- In this hierarchy, the Item class is the abstract class that has an abstract getDescription() method
+- The Food and Drink classes extend Item and override the getDescription() method with their respective override implementations
+

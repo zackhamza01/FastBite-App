@@ -1,13 +1,13 @@
 {"orderlist": [
     {
-        "price": 6.5,
-        "name": "Big Mac",
-        "calories": 800
+        "price": 7.6,
+        "name": "Poutine",
+        "calories": 1170
     },
     {
         "volume": 400,
-        "price": 3.9,
-        "name": "Banana Shake",
-        "calories": 3.9
+        "price": 2.6,
+        "name": "Coca-Cola",
+        "calories": 2.6
     }
 ]}
