@@ -9,9 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 // This class is the main JFrame for this GUI. It welcomes the user to the app and gives
@@ -187,6 +185,8 @@ public class FastBiteGUI extends JFrame {
                 clip.open(audioInput);
                 clip.start();
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
+                FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                volume.setValue(-45);
             } else {
                 JOptionPane.showMessageDialog(null, "Error: Unable to run music");
             }
